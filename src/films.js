@@ -107,8 +107,24 @@ function getMoviesByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(array) {
+  let result = [];
+  for (let movie of array){
+    let newMovie = {...movie};
+    let durationText = newMovie.duration;
+    let durationHours = durationText.substring(0, durationText.indexOf("h"));
+    let durationMinutes = durationText.substring(durationText.indexOf(" ")+1,durationText.length-3);
+    if (!durationMinutes > 0){
+      durationMinutes = 0;
+    }
+    let newDuration = Number.parseInt(durationHours)*60 + Number.parseInt(durationMinutes);
+    newMovie.duration = newDuration;
+    result.push(newMovie);
+    //console.log(durationHours, durationMinutes, duration);
+  }
+  console.log("array original", array);
+  console.log("EXERCISE 7 ->", result);
+  return result;  
 }
 
 // Exercise 8: Get the best film of a year
