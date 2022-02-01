@@ -122,14 +122,31 @@ function hoursToMinutes(array) {
     result.push(newMovie);
     //console.log(durationHours, durationMinutes, duration);
   }
-  console.log("array original", array);
+  
   console.log("EXERCISE 7 ->", result);
   return result;  
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array, year) {
+  let result = array.filter((movie)=>{
+    if(movie.year == year) {
+      return movie;
+    }
+  });
+  result.sort((a,b)=>{
+    if(a.score < b.score) {
+      return 1;
+    } else if (a.score > b.score){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  result = result.slice(0,1);
+
+  console.log("EXERCISE 8 ->", result);
+  return result;
 }
 
 
